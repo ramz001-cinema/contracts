@@ -1,18 +1,41 @@
-syntax == "proto3";
+syntax = "proto3";
 
 package auth.v1;
+
+import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/duration.proto";
+import "google/protobuf/struct.proto";
 
 // AuthService provides operations for authentication.
 service AuthService {
   // SendOtp sends a one-time password (OTP) to the user based on the provided ID and type.
-  rpc SendOtp(SendOtpRequest) returns (SendOtpResponse);
+  rpc SendOtp(SendOtpRequest) returns (DefaultResponse);
+  // Ping checks the health of the service.
+  rpc Ping(google.protobuf.Empty) returns (DefaultResponse);
 }
 
+// SendOtpRequest is the request message for sending an OTP to a user.
 message SendOtpRequest {
   string id   = 1;
   string type = 2;
 }
 
-message SendOtpResponse {
+// DefaultResponse is a simple response message indicating success or failure of an operation.
+message DefaultResponse {
   bool success = 1;
+}
+
+// TEST is a sample message to demonstrate various protobuf features.
+message TEST{
+  string             id    = 1;
+  map<string,string> data  = 2;
+  repeated string    roles = 3;
+  oneof optional {
+    string email = 4;
+    string phone = 5;
+  }
+  google.protobuf.Timestamp created_at = 6;
+  google.protobuf.Duration  duration   = 7;
+  google.protobuf.Struct    metadata   = 8;
 }
