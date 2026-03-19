@@ -1,13 +1,35 @@
 {
-  "name": "contracts",
+  "name": "@ramz001-cinema/contracts",
   "version": "1.0.0",
-  "description": "",
+  "description": "It contains the protobuf definitions and generated TypeScript code for the microservices communication",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "gen": "protoc --plugin=protoc-gen-ts_proto=.\\node_modules\\.bin\\protoc-gen-ts_proto.cmd -I ./proto ./proto/*.proto --ts_proto_out=./gen --ts_proto_opt=nestJs=true,package=omit"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "protobuf",
+    "nestjs",
+    "microservices",
+    "communication",
+    "contracts"
+  ],
+  "author": {
+    "name": "Ramzbek",
+    "email": "rkenjaev1@gmail.com"
+  },
+  "files": [
+    "proto",
+    "gen"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
   "license": "ISC",
-  "packageManager": "pnpm@10.13.1"
+  "packageManager": "pnpm@10.13.1",
+  "dependencies": {
+    "@nestjs/microservices": "^11.1.17",
+    "protobufjs": "^8.0.0",
+    "rxjs": "^7.8.2",
+    "ts-proto": "^2.11.5"
+  }
 }
