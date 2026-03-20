@@ -27,6 +27,9 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Install Protocol Buffers Compiler
+        run: sudo apt-get update && sudo apt-get install -y protobuf-compiler
+
       - name: Generate TypeScript code from protobuf definitions
         run: pnpm run gen
 
