@@ -6,12 +6,8 @@
 
 /* eslint-disable */
 import { GrpcMethod, GrpcStreamMethod } from "@nestjs/microservices";
-import { wrappers } from "protobufjs";
 import { Observable } from "rxjs";
-import { Duration } from "./google/protobuf/duration";
 import { Empty } from "./google/protobuf/empty";
-import { Struct } from "./google/protobuf/struct";
-import { Timestamp } from "./google/protobuf/timestamp";
 
 export const protobufPackage = "auth.v1";
 
@@ -26,26 +22,7 @@ export interface DefaultResponse {
   success: boolean;
 }
 
-/** TEST is a sample message to demonstrate various protobuf features. */
-export interface TEST {
-  id: string;
-  data: { [key: string]: string };
-  roles: string[];
-  email?: string | undefined;
-  phone?: string | undefined;
-  createdAt: Timestamp | undefined;
-  duration: Duration | undefined;
-  metadata: { [key: string]: any } | undefined;
-}
-
-export interface TEST_DataEntry {
-  key: string;
-  value: string;
-}
-
 export const AUTH_V1_PACKAGE_NAME = "auth.v1";
-
-wrappers[".google.protobuf.Struct"] = { fromObject: Struct.wrap, toObject: Struct.unwrap } as any;
 
 /** AuthService provides operations for authentication. */
 
