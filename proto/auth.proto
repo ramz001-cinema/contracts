@@ -7,9 +7,7 @@ import "google/protobuf/empty.proto";
 // AuthService provides operations for authentication.
 service AuthService {
   // SendOtp sends a one-time password (OTP) to the user based on the provided ID and type.
-  rpc SendOtp(SendOtpRequest) returns (DefaultResponse);
-  // Ping checks the health of the service.
-  rpc Ping(google.protobuf.Empty) returns (DefaultResponse);
+  rpc SendOtp(SendOtpRequest) returns (SendOtpResponse);
 }
 
 // SendOtpRequest is the request message for sending an OTP to a user.
@@ -18,7 +16,7 @@ message SendOtpRequest {
   string type = 2;
 }
 
-// DefaultResponse is a simple response message indicating success or failure of an operation.
-message DefaultResponse {
-  bool success = 1;
+// SendOtpResponse is the response message indicating whether the OTP was sent successfully.
+message SendOtpResponse {
+  bool ok = 1;
 }

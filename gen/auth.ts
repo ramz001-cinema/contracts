@@ -7,7 +7,6 @@
 /* eslint-disable */
 import { GrpcMethod, GrpcStreamMethod } from "@nestjs/microservices";
 import { Observable } from "rxjs";
-import { Empty } from "./google/protobuf/empty";
 
 export const protobufPackage = "auth.v1";
 
@@ -17,9 +16,9 @@ export interface SendOtpRequest {
   type: string;
 }
 
-/** DefaultResponse is a simple response message indicating success or failure of an operation. */
-export interface DefaultResponse {
-  success: boolean;
+/** SendOtpResponse is the response message indicating whether the OTP was sent successfully. */
+export interface SendOtpResponse {
+  ok: boolean;
 }
 
 export const AUTH_V1_PACKAGE_NAME = "auth.v1";
@@ -29,11 +28,7 @@ export const AUTH_V1_PACKAGE_NAME = "auth.v1";
 export interface AuthServiceClient {
   /** SendOtp sends a one-time password (OTP) to the user based on the provided ID and type. */
 
-  sendOtp(request: SendOtpRequest): Observable<DefaultResponse>;
-
-  /** Ping checks the health of the service. */
-
-  ping(request: Empty): Observable<DefaultResponse>;
+  sendOtp(request: SendOtpRequest): Observable<SendOtpResponse>;
 }
 
 /** AuthService provides operations for authentication. */
@@ -41,16 +36,12 @@ export interface AuthServiceClient {
 export interface AuthServiceController {
   /** SendOtp sends a one-time password (OTP) to the user based on the provided ID and type. */
 
-  sendOtp(request: SendOtpRequest): Promise<DefaultResponse> | Observable<DefaultResponse> | DefaultResponse;
-
-  /** Ping checks the health of the service. */
-
-  ping(request: Empty): Promise<DefaultResponse> | Observable<DefaultResponse> | DefaultResponse;
+  sendOtp(request: SendOtpRequest): Promise<SendOtpResponse> | Observable<SendOtpResponse> | SendOtpResponse;
 }
 
 export function AuthServiceControllerMethods() {
   return function (constructor: Function) {
-    const grpcMethods: string[] = ["sendOtp", "ping"];
+    const grpcMethods: string[] = ["sendOtp"];
     for (const method of grpcMethods) {
       const descriptor: any = Reflect.getOwnPropertyDescriptor(constructor.prototype, method);
       GrpcMethod("AuthService", method)(constructor.prototype[method], method, descriptor);
