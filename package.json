@@ -1,6 +1,6 @@
 {
   "name": "@ramz001-cinema/contracts",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "It contains the protobuf definitions and generated TypeScript code for the microservices communication",
   "main": "index.js",
   "scripts": {
@@ -30,6 +30,6 @@
     "@nestjs/microservices": "^11.1.17",
     "protobufjs": "^8.0.0",
     "rxjs": "^7.8.2",
-    "ts-proto": "^2.11.5"
+    "ts-proto": "^2.11.6"
   }
 }

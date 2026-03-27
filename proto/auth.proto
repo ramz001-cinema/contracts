@@ -8,10 +8,16 @@ service AuthService {
   rpc SendOtp(SendOtpRequest) returns (SendOtpResponse);
 }
 
+enum OtpType {
+  OTP_TYPE_UNSPECIFIED = 0;
+  OTP_TYPE_EMAIL       = 1;
+  OTP_TYPE_PHONE       = 2;
+}
+
 // SendOtpRequest is the request message for sending an OTP to a user.
 message SendOtpRequest {
-  string id   = 1;
-  string type = 2;
+  string  id   = 1;
+  OtpType type = 2;
 }
 
 // SendOtpResponse is the response message indicating whether the OTP was sent successfully.
