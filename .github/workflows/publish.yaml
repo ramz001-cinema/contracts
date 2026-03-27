@@ -33,6 +33,9 @@ jobs:
       - name: Generate TypeScript code from protobuf definitions
         run: pnpm run gen
 
+      - name: Build JS from generated TypeScript
+        run: pnpm run build
+
       - name: Publish to npm
         run: npm publish --access public
         env:

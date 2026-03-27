@@ -1,9 +1,9 @@
 {
   "name": "@ramz001-cinema/contracts",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "It contains the protobuf definitions and generated TypeScript code for the microservices communication",
-  "main": "index.js",
   "scripts": {
+    "build": "tsc",
     "gen": "protoc -I ./proto ./proto/*.proto --ts_proto_out=./gen --ts_proto_opt=nestJs=true,package=omit"
   },
   "keywords": [
@@ -31,5 +31,8 @@
     "protobufjs": "^8.0.0",
     "rxjs": "^7.8.2",
     "ts-proto": "^2.11.6"
+  },
+  "devDependencies": {
+    "typescript": "^6.0.2"
   }
 }
