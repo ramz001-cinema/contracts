@@ -6,6 +6,8 @@ package auth.v1;
 service AuthService {
   // SendOtp sends a one-time password (OTP) to the user based on the provided ID and type.
   rpc SendOtp(SendOtpRequest) returns (SendOtpResponse);
+  // VerifyOtp verifies the provided OTP for the user based on the ID and type, and returns access and refresh tokens if successful.
+  rpc VerifyOtp(VerifyOtpRequest) returns (VerifyOtpResponse);
 }
 
 enum OtpType {
@@ -23,4 +25,17 @@ message SendOtpRequest {
 // SendOtpResponse is the response message indicating whether the OTP was sent successfully.
 message SendOtpResponse {
   bool ok = 1;
+}
+
+// VerifyOtpRequest is the request message for verifying a one-time password (OTP).
+message VerifyOtpRequest {
+  string  id   = 1;
+  OtpType type = 2;
+  string  otp  = 3;
+}
+
+// VerifyOtpResponse is the response message indicating whether the OTP was verified successfully.
+message VerifyOtpResponse {
+  string access_token  = 1;
+  string refresh_token = 2;
 }
