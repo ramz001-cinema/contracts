@@ -1,6 +1,6 @@
 {
   "name": "@ramz001-cinema/contracts",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "It contains the protobuf definitions and generated TypeScript code for the microservices communication",
   "scripts": {
     "build": "tsc",
@@ -20,7 +20,7 @@
   "files": [
     "proto",
     "gen",
-    "src"
+    "src/index.ts"
   ],
   "publishConfig": {
     "access": "public"
