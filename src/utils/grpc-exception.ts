@@ -1,21 +1,14 @@
-// packages/grpc-contracts/src/exceptions/grpc-exception.factory.ts
 import { status } from "@grpc/grpc-js";
 import { RpcException } from "@nestjs/microservices";
 
-interface GrpcErrorPayload {
-  code: status;
-  message: string;
-  details?: unknown;
-}
-
 export class GrpcException extends RpcException {
-  constructor(code: status, message: string, details?: unknown) {
-    super({ code, message, details } as GrpcErrorPayload);
+  constructor(code: status, message: string) {
+    super({ code, message });
   }
 
   // 400
-  static invalidArgument(msg: string, details?: unknown) {
-    return new GrpcException(status.INVALID_ARGUMENT, msg, details);
+  static invalidArgument(msg: string) {
+    return new GrpcException(status.INVALID_ARGUMENT, msg);
   }
 
   // 401
