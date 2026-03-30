@@ -1,6 +1,6 @@
 {
   "name": "@ramz001-cinema/contracts",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "It contains the protobuf definitions and generated TypeScript code for the microservices communication",
   "scripts": {
     "build": "tsc",
@@ -19,7 +19,8 @@
   },
   "files": [
     "proto",
-    "gen"
+    "gen",
+    "src"
   ],
   "publishConfig": {
     "access": "public"
@@ -27,6 +28,7 @@
   "license": "ISC",
   "packageManager": "pnpm@10.13.1",
   "dependencies": {
+    "@grpc/grpc-js": "^1.14.3",
     "@nestjs/microservices": "^11.1.17",
     "protobufjs": "^8.0.0",
     "rxjs": "^7.8.2",
