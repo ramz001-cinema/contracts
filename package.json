@@ -1,10 +1,10 @@
 {
   "name": "@ramz001-cinema/contracts",
-  "version": "1.0.9",
+  "version": "2.0.0",
   "description": "It contains the protobuf definitions and generated TypeScript code for the microservices communication",
   "scripts": {
     "build": "tsc",
-    "gen": "protoc -I ./proto ./proto/*.proto --ts_proto_out=./gen --ts_proto_opt=nestJs=true,package=omit"
+    "gen": "protoc -I ./proto ./proto/*.proto --ts_proto_out=./src/gen --ts_proto_opt=nestJs=true,package=omit"
   },
   "keywords": [
     "protobuf",
@@ -17,10 +17,18 @@
     "name": "Ramzbek",
     "email": "rkenjaev1@gmail.com"
   },
-  "main": "src/index.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.js",
+      "default": "./dist/index.js"
+    }
+  },
   "files": [
     "proto",
-    "gen"
+    "dist"
   ],
   "publishConfig": {
     "access": "public"

@@ -28,6 +28,19 @@ export interface SendOtpResponse {
   ok: boolean;
 }
 
+/** VerifyOtpRequest is the request message for verifying a one-time password (OTP). */
+export interface VerifyOtpRequest {
+  id: string;
+  type: OtpType;
+  otp: string;
+}
+
+/** VerifyOtpResponse is the response message indicating whether the OTP was verified successfully. */
+export interface VerifyOtpResponse {
+  accessToken: string;
+  refreshToken: string;
+}
+
 export const AUTH_V1_PACKAGE_NAME = "auth.v1";
 
 /** AuthService provides operations for authentication. */
@@ -36,6 +49,10 @@ export interface AuthServiceClient {
   /** SendOtp sends a one-time password (OTP) to the user based on the provided ID and type. */
 
   sendOtp(request: SendOtpRequest): Observable<SendOtpResponse>;
+
+  /** VerifyOtp verifies the provided OTP for the user based on the ID and type, and returns access and refresh tokens if successful. */
+
+  verifyOtp(request: VerifyOtpRequest): Observable<VerifyOtpResponse>;
 }
 
 /** AuthService provides operations for authentication. */
@@ -44,11 +61,15 @@ export interface AuthServiceController {
   /** SendOtp sends a one-time password (OTP) to the user based on the provided ID and type. */
 
   sendOtp(request: SendOtpRequest): Promise<SendOtpResponse> | Observable<SendOtpResponse> | SendOtpResponse;
+
+  /** VerifyOtp verifies the provided OTP for the user based on the ID and type, and returns access and refresh tokens if successful. */
+
+  verifyOtp(request: VerifyOtpRequest): Promise<VerifyOtpResponse> | Observable<VerifyOtpResponse> | VerifyOtpResponse;
 }
 
 export function AuthServiceControllerMethods() {
   return function (constructor: Function) {
-    const grpcMethods: string[] = ["sendOtp"];
+    const grpcMethods: string[] = ["sendOtp", "verifyOtp"];
     for (const method of grpcMethods) {
       const descriptor: any = Reflect.getOwnPropertyDescriptor(constructor.prototype, method);
       GrpcMethod("AuthService", method)(constructor.prototype[method], method, descriptor);
