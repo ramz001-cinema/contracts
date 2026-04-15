@@ -31,7 +31,7 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y protobuf-compiler
 
       - name: Generate TypeScript code from protobuf definitions
-        run: pnpm run gen
+        run: pnpm run generate
 
       - name: Build JS from generated TypeScript
         run: pnpm run build

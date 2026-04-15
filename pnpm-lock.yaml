@@ -14,9 +14,15 @@ importers:
       '@nestjs/microservices':
         specifier: ^11.1.17
         version: 11.1.17(@grpc/grpc-js@1.14.3)(@nestjs/common@11.1.17(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.1.17)(reflect-metadata@0.2.2)(rxjs@7.8.2)
+      '@ramz001-cinema/core':
+        specifier: ^1.0.7
+        version: 1.0.7(prettier@3.8.3)
       jiti:
         specifier: ^2.6.1
         version: 2.6.1
+      prettier:
+        specifier: ^3.8.3
+        version: 3.8.3
       protobufjs:
         specifier: ^8.0.0
         version: 8.0.0
@@ -226,6 +232,11 @@ packages:
 
   '@protobufjs/utf8@1.1.0':
     resolution: {integrity: sha512-Vvn3zZrhQZkkBE8LSuW3em98c0FwgO4nxzv6OdSxPKJIEKY2bGbHn+mhGIPerzI4twdxaP8/0+06HBpwf345Lw==}
+
+  '@ramz001-cinema/core@1.0.7':
+    resolution: {integrity: sha512-3lkWK5CX+paDvjjKpo0cfS7Q3FtRjf0nrBX2l/WRWAjJ/ksgYx5x9JYhA6JlhYmdsoqehDFvo7TEreStEU0YQA==}
+    peerDependencies:
+      prettier: ^3.8.1
 
   '@tokenizer/inflate@0.4.1':
     resolution: {integrity: sha512-2mAv+8pkG6GIZiF1kNg1jAjh27IDxEPKwdGul3snfztFerfPGI1LjDezZp3i7BElXompqEtPmoPx6c2wgtWsOA==}
@@ -591,6 +602,11 @@ packages:
     resolution: {integrity: sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==}
     engines: {node: '>= 0.8.0'}
 
+  prettier@3.8.3:
+    resolution: {integrity: sha512-7igPTM53cGHMW8xWuVTydi2KO233VFiTNyF5hLJqpilHfmn8C8gPf+PS7dUT64YcXFbiMGZxS9pCSxL/Dxm/Jw==}
+    engines: {node: '>=14'}
+    hasBin: true
+
   protobufjs@7.5.4:
     resolution: {integrity: sha512-CvexbZtbov6jW2eXAvLukXjXUW1TzFaivC46BpWc/3BpcCysb5Vffu+B3XHMm8lVEuy2Mm4XGex8hBSg1yapPg==}
     engines: {node: '>=12.0.0'}
@@ -854,6 +870,10 @@ snapshots:
   '@protobufjs/pool@1.1.0': {}
 
   '@protobufjs/utf8@1.1.0': {}
+
+  '@ramz001-cinema/core@1.0.7(prettier@3.8.3)':
+    dependencies:
+      prettier: 3.8.3
 
   '@tokenizer/inflate@0.4.1':
     dependencies:
@@ -1222,6 +1242,8 @@ snapshots:
   picomatch@4.0.4: {}
 
   prelude-ls@1.2.1: {}
+
+  prettier@3.8.3: {}
 
   protobufjs@7.5.4:
     dependencies:
