@@ -1,6 +1,6 @@
 {
 	"name": "@ramz001-cinema/contracts",
-	"version": "2.0.5",
+	"version": "2.0.6",
 	"description": "It contains the protobuf definitions and generated TypeScript code for the microservices communication",
 	"scripts": {
 		"build": "tsc",
@@ -39,20 +39,20 @@
 	"packageManager": "pnpm@10.13.1",
 	"dependencies": {
 		"@grpc/grpc-js": "^1.14.3",
-		"@nestjs/microservices": "^11.1.17",
+		"@nestjs/microservices": "^11.1.19",
 		"@ramz001-cinema/core": "^1.0.7",
 		"jiti": "^2.6.1",
 		"prettier": "^3.8.3",
-		"protobufjs": "^8.0.0",
+		"protobufjs": "^8.0.3",
 		"rxjs": "^7.8.2",
 		"ts-proto": "^2.11.6"
 	},
 	"devDependencies": {
 		"@eslint/js": "^10.0.1",
-		"@types/node": "^25.5.0",
-		"eslint": "^10.2.0",
-		"globals": "^17.5.0",
-		"typescript": "^6.0.2",
-		"typescript-eslint": "^8.58.2"
+		"@types/node": "^25.6.0",
+		"eslint": "^10.3.0",
+		"globals": "^17.6.0",
+		"typescript": "^6.0.3",
+		"typescript-eslint": "^8.59.1"
 	}
 }
