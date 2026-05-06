@@ -1,7 +1,6 @@
 syntax = "proto3";
 
 package account.v1;
-import "google/protobuf/timestamp.proto";
 
 service AccountService {
   rpc GetProfile(GetProfileRequest) returns (GetProfileResponse);
@@ -12,12 +11,12 @@ message GetProfileRequest {
 }
 
 message GetProfileResponse {
-  string                             id                = 1;
-  optional string                    email             = 2;
-  optional string                    phone             = 3;
-  optional google.protobuf.Timestamp phone_verified_at = 4;
-  optional google.protobuf.Timestamp email_verified_at = 5;
-  Role                               role              = 6;
+  string          id                = 1;
+  optional string email             = 2;
+  optional string phone             = 3;
+  optional string phone_verified_at = 4;
+  optional string email_verified_at = 5;
+  Role            role              = 6;
 }
 
 enum Role {

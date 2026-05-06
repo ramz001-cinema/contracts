@@ -6,7 +6,6 @@
 
 /* eslint-disable */
 import { GrpcMethod, GrpcStreamMethod } from '@nestjs/microservices'
-import { wrappers } from 'protobufjs'
 import { Observable } from 'rxjs'
 
 export const protobufPackage = 'account.v1'
@@ -25,24 +24,12 @@ export interface GetProfileResponse {
 	id: string
 	email?: string | undefined
 	phone?: string | undefined
-	phoneVerifiedAt?: Date | undefined
-	emailVerifiedAt?: Date | undefined
+	phoneVerifiedAt?: string | undefined
+	emailVerifiedAt?: string | undefined
 	role: Role
 }
 
 export const ACCOUNT_V1_PACKAGE_NAME = 'account.v1'
-
-wrappers['.google.protobuf.Timestamp'] = {
-	fromObject(value: Date) {
-		return {
-			seconds: value.getTime() / 1000,
-			nanos: (value.getTime() % 1000) * 1e6
-		}
-	},
-	toObject(message: { seconds: number; nanos: number }) {
-		return new Date(message.seconds * 1000 + message.nanos / 1e6)
-	}
-} as any
 
 export interface AccountServiceClient {
 	getProfile(request: GetProfileRequest): Observable<GetProfileResponse>
