@@ -23,10 +23,10 @@ export interface GetProfileRequest {
 
 export interface GetProfileResponse {
 	id: string
-	email: string
-	phone: string
-	phoneVerifiedAt: Timestamp | undefined
-	emailVerifiedAt: Timestamp | undefined
+	email?: string | undefined
+	phone?: string | undefined
+	phoneVerifiedAt?: Timestamp | undefined
+	emailVerifiedAt?: Timestamp | undefined
 	role: Role
 }
 
