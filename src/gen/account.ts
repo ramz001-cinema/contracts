@@ -5,72 +5,55 @@
 // source: account.proto
 
 /* eslint-disable */
-import { GrpcMethod, GrpcStreamMethod } from '@nestjs/microservices'
-import { Observable } from 'rxjs'
+import { GrpcMethod, GrpcStreamMethod } from "@nestjs/microservices";
+import { Observable } from "rxjs";
 
-export const protobufPackage = 'account.v1'
+export const protobufPackage = "account.v1";
 
 export enum Role {
-	USER = 0,
-	ADMIN = 1,
-	UNRECOGNIZED = -1
+  USER = 0,
+  ADMIN = 1,
+  UNRECOGNIZED = -1,
 }
 
 export interface GetProfileRequest {
-	id: string
+  id: string;
 }
 
 export interface GetProfileResponse {
-	id: string
-	email?: string | undefined
-	phone?: string | undefined
-	phoneVerifiedAt?: string | undefined
-	emailVerifiedAt?: string | undefined
-	role: Role
+  id: string;
+  email?: string | undefined;
+  phone?: string | undefined;
+  phoneVerifiedAt?: string | undefined;
+  emailVerifiedAt?: string | undefined;
+  role: Role;
 }
 
-export const ACCOUNT_V1_PACKAGE_NAME = 'account.v1'
+export const ACCOUNT_V1_PACKAGE_NAME = "account.v1";
 
 export interface AccountServiceClient {
-	getProfile(request: GetProfileRequest): Observable<GetProfileResponse>
+  getProfile(request: GetProfileRequest): Observable<GetProfileResponse>;
 }
 
 export interface AccountServiceController {
-	getProfile(
-		request: GetProfileRequest
-	):
-		| Promise<GetProfileResponse>
-		| Observable<GetProfileResponse>
-		| GetProfileResponse
+  getProfile(
+    request: GetProfileRequest,
+  ): Promise<GetProfileResponse> | Observable<GetProfileResponse> | GetProfileResponse;
 }
 
 export function AccountServiceControllerMethods() {
-	return function (constructor: Function) {
-		const grpcMethods: string[] = ['getProfile']
-		for (const method of grpcMethods) {
-			const descriptor: any = Reflect.getOwnPropertyDescriptor(
-				constructor.prototype,
-				method
-			)
-			GrpcMethod('AccountService', method)(
-				constructor.prototype[method],
-				method,
-				descriptor
-			)
-		}
-		const grpcStreamMethods: string[] = []
-		for (const method of grpcStreamMethods) {
-			const descriptor: any = Reflect.getOwnPropertyDescriptor(
-				constructor.prototype,
-				method
-			)
-			GrpcStreamMethod('AccountService', method)(
-				constructor.prototype[method],
-				method,
-				descriptor
-			)
-		}
-	}
+  return function (constructor: Function) {
+    const grpcMethods: string[] = ["getProfile"];
+    for (const method of grpcMethods) {
+      const descriptor: any = Reflect.getOwnPropertyDescriptor(constructor.prototype, method);
+      GrpcMethod("AccountService", method)(constructor.prototype[method], method, descriptor);
+    }
+    const grpcStreamMethods: string[] = [];
+    for (const method of grpcStreamMethods) {
+      const descriptor: any = Reflect.getOwnPropertyDescriptor(constructor.prototype, method);
+      GrpcStreamMethod("AccountService", method)(constructor.prototype[method], method, descriptor);
+    }
+  };
 }
 
-export const ACCOUNT_SERVICE_NAME = 'AccountService'
+export const ACCOUNT_SERVICE_NAME = "AccountService";

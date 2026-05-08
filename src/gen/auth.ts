@@ -5,126 +5,102 @@
 // source: auth.proto
 
 /* eslint-disable */
-import { GrpcMethod, GrpcStreamMethod } from '@nestjs/microservices'
-import { Observable } from 'rxjs'
+import { GrpcMethod, GrpcStreamMethod } from "@nestjs/microservices";
+import { Observable } from "rxjs";
 
-export const protobufPackage = 'auth.v1'
+export const protobufPackage = "auth.v1";
 
 export enum OtpType {
-	OTP_TYPE_UNSPECIFIED = 0,
-	OTP_TYPE_EMAIL = 1,
-	OTP_TYPE_PHONE = 2,
-	UNRECOGNIZED = -1
+  OTP_TYPE_UNSPECIFIED = 0,
+  OTP_TYPE_EMAIL = 1,
+  OTP_TYPE_PHONE = 2,
+  UNRECOGNIZED = -1,
 }
 
 /** SendOtpRequest is the request message for sending an OTP to a user. */
 export interface SendOtpRequest {
-	id: string
-	type: OtpType
+  id: string;
+  type: OtpType;
 }
 
 /** SendOtpResponse is the response message indicating whether the OTP was sent successfully. */
 export interface SendOtpResponse {
-	ok: boolean
+  ok: boolean;
 }
 
 /** VerifyOtpRequest is the request message for verifying a one-time password (OTP). */
 export interface VerifyOtpRequest {
-	id: string
-	type: OtpType
-	otp: string
+  id: string;
+  type: OtpType;
+  otp: string;
 }
 
 /** VerifyOtpResponse is the response message indicating whether the OTP was verified successfully. */
 export interface VerifyOtpResponse {
-	accessToken: string
-	refreshToken: string
+  accessToken: string;
+  refreshToken: string;
 }
 
 /** RefreshTokenRequest is the request message for refreshing an access token. */
 export interface RefreshTokenRequest {
-	refreshToken: string
+  refreshToken: string;
 }
 
 /** RefreshTokenResponse is the response message containing the new access token. */
 export interface RefreshTokenResponse {
-	accessToken: string
-	refreshToken: string
+  accessToken: string;
+  refreshToken: string;
 }
 
-export const AUTH_V1_PACKAGE_NAME = 'auth.v1'
+export const AUTH_V1_PACKAGE_NAME = "auth.v1";
 
 /** AuthService provides operations for authentication. */
 
 export interface AuthServiceClient {
-	/** SendOtp sends a one-time password (OTP) to the user based on the provided ID and type. */
+  /** SendOtp sends a one-time password (OTP) to the user based on the provided ID and type. */
 
-	sendOtp(request: SendOtpRequest): Observable<SendOtpResponse>
+  sendOtp(request: SendOtpRequest): Observable<SendOtpResponse>;
 
-	/** VerifyOtp verifies the provided OTP for the user based on the ID and type, and returns access and refresh tokens if successful. */
+  /** VerifyOtp verifies the provided OTP for the user based on the ID and type, and returns access and refresh tokens if successful. */
 
-	verifyOtp(request: VerifyOtpRequest): Observable<VerifyOtpResponse>
+  verifyOtp(request: VerifyOtpRequest): Observable<VerifyOtpResponse>;
 
-	/** RefreshToken refreshes the access token using a valid refresh token. */
+  /** RefreshToken refreshes the access token using a valid refresh token. */
 
-	refreshToken(request: RefreshTokenRequest): Observable<RefreshTokenResponse>
+  refreshToken(request: RefreshTokenRequest): Observable<RefreshTokenResponse>;
 }
 
 /** AuthService provides operations for authentication. */
 
 export interface AuthServiceController {
-	/** SendOtp sends a one-time password (OTP) to the user based on the provided ID and type. */
+  /** SendOtp sends a one-time password (OTP) to the user based on the provided ID and type. */
 
-	sendOtp(
-		request: SendOtpRequest
-	): Promise<SendOtpResponse> | Observable<SendOtpResponse> | SendOtpResponse
+  sendOtp(request: SendOtpRequest): Promise<SendOtpResponse> | Observable<SendOtpResponse> | SendOtpResponse;
 
-	/** VerifyOtp verifies the provided OTP for the user based on the ID and type, and returns access and refresh tokens if successful. */
+  /** VerifyOtp verifies the provided OTP for the user based on the ID and type, and returns access and refresh tokens if successful. */
 
-	verifyOtp(
-		request: VerifyOtpRequest
-	):
-		| Promise<VerifyOtpResponse>
-		| Observable<VerifyOtpResponse>
-		| VerifyOtpResponse
+  verifyOtp(request: VerifyOtpRequest): Promise<VerifyOtpResponse> | Observable<VerifyOtpResponse> | VerifyOtpResponse;
 
-	/** RefreshToken refreshes the access token using a valid refresh token. */
+  /** RefreshToken refreshes the access token using a valid refresh token. */
 
-	refreshToken(
-		request: RefreshTokenRequest
-	):
-		| Promise<RefreshTokenResponse>
-		| Observable<RefreshTokenResponse>
-		| RefreshTokenResponse
+  refreshToken(
+    request: RefreshTokenRequest,
+  ): Promise<RefreshTokenResponse> | Observable<RefreshTokenResponse> | RefreshTokenResponse;
 }
 
 export function AuthServiceControllerMethods() {
-	return function (constructor: Function) {
-		const grpcMethods: string[] = ['sendOtp', 'verifyOtp', 'refreshToken']
-		for (const method of grpcMethods) {
-			const descriptor: any = Reflect.getOwnPropertyDescriptor(
-				constructor.prototype,
-				method
-			)
-			GrpcMethod('AuthService', method)(
-				constructor.prototype[method],
-				method,
-				descriptor
-			)
-		}
-		const grpcStreamMethods: string[] = []
-		for (const method of grpcStreamMethods) {
-			const descriptor: any = Reflect.getOwnPropertyDescriptor(
-				constructor.prototype,
-				method
-			)
-			GrpcStreamMethod('AuthService', method)(
-				constructor.prototype[method],
-				method,
-				descriptor
-			)
-		}
-	}
+  return function (constructor: Function) {
+    const grpcMethods: string[] = ["sendOtp", "verifyOtp", "refreshToken"];
+    for (const method of grpcMethods) {
+      const descriptor: any = Reflect.getOwnPropertyDescriptor(constructor.prototype, method);
+      GrpcMethod("AuthService", method)(constructor.prototype[method], method, descriptor);
+    }
+    const grpcStreamMethods: string[] = [];
+    for (const method of grpcStreamMethods) {
+      const descriptor: any = Reflect.getOwnPropertyDescriptor(constructor.prototype, method);
+      GrpcStreamMethod("AuthService", method)(constructor.prototype[method], method, descriptor);
+    }
+  };
 }
 
-export const AUTH_SERVICE_NAME = 'AuthService'
+export const AUTH_SERVICE_NAME = "AuthService";
