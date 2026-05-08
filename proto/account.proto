@@ -1,9 +1,23 @@
 syntax = "proto3";
 
+// buf:lint:ignore PACKAGE_DIRECTORY_MATCH
 package account.v1;
 
 service AccountService {
+  // GetProfile returns the profile information of a user by their ID.
   rpc GetProfile(GetProfileRequest) returns (GetProfileResponse);
+
+  // InitEmailChange initiates the process of changing a user's email address.
+  rpc InitEmailChange(InitEmailChangeRequest) returns (InitEmailChangeResponse);
+
+  // ConfirmEmailChange confirms the email change using the provided OTP.
+  rpc ConfirmEmailChange(ConfirmEmailChangeRequest) returns (ConfirmEmailChangeResponse);
+
+  // InitPhoneChange initiates the process of changing a user's phone number.
+  rpc InitPhoneChange(InitPhoneChangeRequest) returns (InitPhoneChangeResponse);
+
+  // ConfirmPhoneChange confirms the phone number change using the provided OTP.
+  rpc ConfirmPhoneChange(ConfirmPhoneChangeRequest) returns (ConfirmPhoneChangeResponse);
 }
 
 message GetProfileRequest {
@@ -11,15 +25,54 @@ message GetProfileRequest {
 }
 
 message GetProfileResponse {
-  string          id                = 1;
-  optional string email             = 2;
-  optional string phone             = 3;
+  string id = 1;
+  optional string email = 2;
+  optional string phone = 3;
   optional string phone_verified_at = 4;
   optional string email_verified_at = 5;
-  Role            role              = 6;
+  Role role = 6;
 }
 
 enum Role {
-  USER  = 0;
-  ADMIN = 1;
+  ROLE_UNSPECIFIED = 0;
+  ROLE_USER = 1;
+  ROLE_ADMIN = 2;
+}
+
+message InitEmailChangeRequest {
+  string id = 1;
+  string email = 2;
+}
+
+message InitEmailChangeResponse {
+  bool ok = 1;
+}
+
+message ConfirmEmailChangeRequest {
+  string id = 1;
+  string email = 2;
+  string otp = 3;
+}
+
+message ConfirmEmailChangeResponse {
+  bool ok = 1;
+}
+
+message InitPhoneChangeRequest {
+  string id = 1;
+  string phone = 2;
+}
+
+message InitPhoneChangeResponse {
+  bool ok = 1;
+}
+
+message ConfirmPhoneChangeRequest {
+  string id = 1;
+  string phone = 2;
+  string otp = 3;
+}
+
+message ConfirmPhoneChangeResponse {
+  bool ok = 1;
 }

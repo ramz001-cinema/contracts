@@ -1,5 +1,6 @@
 syntax = "proto3";
 
+// buf:lint:ignore PACKAGE_DIRECTORY_MATCH
 package auth.v1;
 
 // AuthService provides operations for authentication.
@@ -14,13 +15,13 @@ service AuthService {
 
 enum OtpType {
   OTP_TYPE_UNSPECIFIED = 0;
-  OTP_TYPE_EMAIL       = 1;
-  OTP_TYPE_PHONE       = 2;
+  OTP_TYPE_EMAIL = 1;
+  OTP_TYPE_PHONE = 2;
 }
 
 // SendOtpRequest is the request message for sending an OTP to a user.
 message SendOtpRequest {
-  string  id   = 1;
+  string id = 1;
   OtpType type = 2;
 }
 
@@ -31,14 +32,14 @@ message SendOtpResponse {
 
 // VerifyOtpRequest is the request message for verifying a one-time password (OTP).
 message VerifyOtpRequest {
-  string  id   = 1;
+  string id = 1;
   OtpType type = 2;
-  string  otp  = 3;
+  string otp = 3;
 }
 
 // VerifyOtpResponse is the response message indicating whether the OTP was verified successfully.
 message VerifyOtpResponse {
-  string access_token  = 1;
+  string access_token = 1;
   string refresh_token = 2;
 }
 
@@ -49,6 +50,6 @@ message RefreshTokenRequest {
 
 // RefreshTokenResponse is the response message containing the new access token.
 message RefreshTokenResponse {
-  string access_token  = 1;
+  string access_token = 1;
   string refresh_token = 2;
 }
