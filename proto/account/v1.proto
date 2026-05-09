@@ -40,6 +40,7 @@ message InitContactChangeResponse {
 
 message ConfirmContactChangeRequest {
   string id = 1;
+  common.v1.ContactType type = 2;
   string otp = 3;
 }
 
