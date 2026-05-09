@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package account.v1;
 
-import "common/v1/common.proto";
+import "common/v1/index.proto";
 
 service AccountService {
   // GetProfile returns the profile information of a user by their ID.

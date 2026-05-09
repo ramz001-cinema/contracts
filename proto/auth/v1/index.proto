@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package auth.v1;
 
-import "common/v1/common.proto";
+import "common/v1/index.proto";
 
 // AuthService provides operations for authentication.
 service AuthService {
