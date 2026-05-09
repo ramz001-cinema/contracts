@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package common.v1;
+
+// ContactType represents supported user contact methods.
+enum ContactType {
+  CONTACT_TYPE_UNSPECIFIED = 0;
+  CONTACT_TYPE_EMAIL = 1;
+  CONTACT_TYPE_PHONE = 2;
+}
+
+// Role represents the authorization level of a user.
+enum Role {
+  ROLE_UNSPECIFIED = 0;
+  ROLE_USER = 1;
+  ROLE_ADMIN = 2;
+}

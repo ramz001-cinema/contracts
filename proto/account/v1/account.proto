@@ -1,0 +1,48 @@
+syntax = "proto3";
+
+package account.v1;
+
+import "common/v1/common.proto";
+
+service AccountService {
+  // GetProfile returns the profile information of a user by their ID.
+  rpc GetProfile(GetProfileRequest) returns (GetProfileResponse);
+
+  // InitContactChange initiates the process of changing either email or phone based on the provided type and sends an OTP for verification.
+  rpc InitContactChange(InitContactChangeRequest) returns (InitContactChangeResponse);
+
+  // ConfirmContactChange confirms the contact change (email or phone) using the provided OTP.
+  rpc ConfirmContactChange(ConfirmContactChangeRequest) returns (ConfirmContactChangeResponse);
+}
+
+message GetProfileRequest {
+  string id = 1;
+}
+
+message GetProfileResponse {
+  string id = 1;
+  optional string email = 2;
+  optional string phone = 3;
+  optional string phone_verified_at = 4;
+  optional string email_verified_at = 5;
+  common.v1.Role role = 6;
+}
+
+message InitContactChangeRequest {
+  string id = 1;
+  common.v1.ContactType type = 2;
+  string new_contact = 3;
+}
+
+message InitContactChangeResponse {
+  bool ok = 1;
+}
+
+message ConfirmContactChangeRequest {
+  string id = 1;
+  string otp = 3;
+}
+
+message ConfirmContactChangeResponse {
+  bool ok = 1;
+}

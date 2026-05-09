@@ -1,7 +1,8 @@
 syntax = "proto3";
 
-// buf:lint:ignore PACKAGE_DIRECTORY_MATCH
 package auth.v1;
+
+import "common/v1/common.proto";
 
 // AuthService provides operations for authentication.
 service AuthService {
@@ -13,16 +14,10 @@ service AuthService {
   rpc RefreshToken(RefreshTokenRequest) returns (RefreshTokenResponse);
 }
 
-enum OtpType {
-  OTP_TYPE_UNSPECIFIED = 0;
-  OTP_TYPE_EMAIL = 1;
-  OTP_TYPE_PHONE = 2;
-}
-
 // SendOtpRequest is the request message for sending an OTP to a user.
 message SendOtpRequest {
   string id = 1;
-  OtpType type = 2;
+  common.v1.ContactType type = 2;
 }
 
 // SendOtpResponse is the response message indicating whether the OTP was sent successfully.
@@ -33,7 +28,7 @@ message SendOtpResponse {
 // VerifyOtpRequest is the request message for verifying a one-time password (OTP).
 message VerifyOtpRequest {
   string id = 1;
-  OtpType type = 2;
+  common.v1.ContactType type = 2;
   string otp = 3;
 }
 
