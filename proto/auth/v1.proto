@@ -16,7 +16,7 @@ service AuthService {
 
 // SendOtpRequest is the request message for sending an OTP to a user.
 message SendOtpRequest {
-  string id = 1;
+  string identifier = 1;
   common.v1.ContactType type = 2;
 }
 
@@ -27,7 +27,7 @@ message SendOtpResponse {
 
 // VerifyOtpRequest is the request message for verifying a one-time password (OTP).
 message VerifyOtpRequest {
-  string id = 1;
+  string identifier = 1;
   common.v1.ContactType type = 2;
   string otp = 3;
 }
