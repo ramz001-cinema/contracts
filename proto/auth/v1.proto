@@ -12,6 +12,10 @@ service AuthService {
   rpc VerifyOtp(VerifyOtpRequest) returns (VerifyOtpResponse);
   // RefreshToken refreshes the access token using a valid refresh token.
   rpc RefreshToken(RefreshTokenRequest) returns (RefreshTokenResponse);
+  // TelegramInit initializes the Telegram authentication process and returns a URL for the user to complete the authentication.
+  rpc TelegramInit(TelegramInitRequest) returns (TelegramInitResponse);
+  // TelegramVerify
+  rpc TelegramVerify(TelegramVerifyRequest) returns (TelegramVerifyResponse);
 }
 
 // SendOtpRequest is the request message for sending an OTP to a user.
@@ -47,4 +51,26 @@ message RefreshTokenRequest {
 message RefreshTokenResponse {
   string access_token = 1;
   string refresh_token = 2;
+}
+
+// TelegramVerifyRequest is the request message for verifying Telegram authentication.
+message TelegramInitRequest {}
+
+// TelegramInitResponse is the response message for initializing Telegram authentication.
+message TelegramInitResponse {
+  string url = 1;
+}
+
+// TelegramVerifyRequest is the request message for verifying Telegram authentication.
+message TelegramVerifyRequest {
+  map<string, string> query = 1;
+}
+
+// TelegramVerifyResponse is the response message for verifying Telegram authentication.
+message TelegramVerifyResponse {
+  oneof result {
+    string url = 1;
+    string access_token = 2;
+    string refresh_token = 3;
+  }
 }
