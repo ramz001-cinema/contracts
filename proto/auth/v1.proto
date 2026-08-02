@@ -63,7 +63,7 @@ message TelegramInitResponse {
 
 // TelegramVerifyRequest is the request message for verifying Telegram authentication.
 message TelegramVerifyRequest {
-  map<string, string> query = 1;
+  map<string, string> auth_result = 1;
 }
 
 // TelegramVerifyResponse is the response message for verifying Telegram authentication.
