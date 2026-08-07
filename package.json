@@ -43,22 +43,22 @@
 	"license": "MIT",
 	"packageManager": "pnpm@10.13.1",
 	"dependencies": {
-		"@grpc/grpc-js": "^1.14.3",
-		"@nestjs/microservices": "^11.1.19",
-		"@ramz001-cinema/core": "^1.0.7",
-		"jiti": "^2.6.1",
-		"prettier": "^3.8.3",
+		"@grpc/grpc-js": "^1.14.4",
+		"@nestjs/microservices": "^11.1.28",
+		"jiti": "^2.7.0",
+		"prettier": "^3.9.6",
 		"rxjs": "^7.8.2"
 	},
 	"devDependencies": {
-		"@bufbuild/buf": "^1.69.0",
+		"@bufbuild/buf": "^1.72.0",
 		"@eslint/js": "^10.0.1",
-		"@nestjs/common": "^11.1.19",
-		"@types/node": "^25.6.0",
-		"eslint": "^10.3.0",
-		"globals": "^17.6.0",
-		"ts-proto": "^2.11.8",
-		"typescript": "^6.0.3",
-		"typescript-eslint": "^8.59.1"
+		"@nestjs/common": "^11.1.28",
+		"@ramz001-cinema/core": "^1.1.1",
+		"@types/node": "^25.9.5",
+		"eslint": "^10.8.0",
+		"eslint-config-prettier": "^10.1.8",
+		"globals": "^17.9.0",
+		"ts-proto": "^2.12.0",
+		"typescript": "^6.0.3"
 	}
 }
