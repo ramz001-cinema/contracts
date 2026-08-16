@@ -1,6 +1,6 @@
 {
 	"name": "@ramz001-cinema/contracts",
-	"version": "3.2.2",
+	"version": "3.2.3",
 	"description": "It contains the protobuf definitions and generated TypeScript code for the microservices communication",
 	"scripts": {
 		"build": "tsc",
@@ -53,7 +53,7 @@
 		"@bufbuild/buf": "^1.72.0",
 		"@eslint/js": "^10.0.1",
 		"@nestjs/common": "^11.2.1",
-		"@ramz001-cinema/core": "^1.2.2",
+		"@ramz001-cinema/core": "^1.2.3",
 		"@types/node": "^25.9.5",
 		"eslint": "^10.8.1",
 		"eslint-config-prettier": "^10.1.8",

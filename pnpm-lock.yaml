@@ -38,8 +38,8 @@ importers:
         specifier: ^11.2.1
         version: 11.2.1(reflect-metadata@0.2.2)(rxjs@7.8.2)
       '@ramz001-cinema/core':
-        specifier: ^1.2.2
-        version: 1.2.2(@eslint/js@10.0.1(eslint@10.8.1(jiti@2.7.0)))(eslint-plugin-prettier@5.5.6(eslint-config-prettier@10.1.8(eslint@10.8.1(jiti@2.7.0)))(eslint@10.8.1(jiti@2.7.0))(prettier@3.9.6))(eslint@10.8.1(jiti@2.7.0))(globals@17.11.0)(prettier@3.9.6)(typescript-eslint@8.66.0(eslint@10.8.1(jiti@2.7.0))(typescript@6.0.3))
+        specifier: ^1.2.3
+        version: 1.2.3(@eslint/js@10.0.1(eslint@10.8.1(jiti@2.7.0)))(eslint-plugin-prettier@5.5.6(eslint-config-prettier@10.1.8(eslint@10.8.1(jiti@2.7.0)))(eslint@10.8.1(jiti@2.7.0))(prettier@3.9.6))(eslint@10.8.1(jiti@2.7.0))(globals@17.11.0)(prettier@3.9.6)(typescript-eslint@8.66.0(eslint@10.8.1(jiti@2.7.0))(typescript@6.0.3))
       '@types/node':
         specifier: ^25.9.5
         version: 25.9.5
@@ -292,8 +292,8 @@ packages:
   '@protobufjs/utf8@1.1.2':
     resolution: {integrity: sha512-b1UQwcEZ4yCnMCD8DAL1VlbvBJE9/IX4FTIp7BG1xYpf29SLazLSrqUkj4w7Y5y7cCVP6E5tcqqcI0xemPkHug==}
 
-  '@ramz001-cinema/core@1.2.2':
-    resolution: {integrity: sha512-JpCXSFQg5jxD5RvI774J7KCRvs0G0lQF2kdYKxW7WKEoUafQqg52JPH9TJupfYu2EaxLJKbR7fTiSkd8gX5abg==}
+  '@ramz001-cinema/core@1.2.3':
+    resolution: {integrity: sha512-9oJ4Y3mEuCJgOikLpSUyqadnlYGbbrVbPSCRfV7qVA0Bm3ogDYR9DlrM4/gbcIMMJSEDG0iTyRvuMpOXZ3Nzbw==}
     peerDependencies:
       '@eslint/js': ^10.0.1
       eslint: ^10.8.0
@@ -1001,7 +1001,7 @@ snapshots:
 
   '@protobufjs/utf8@1.1.2': {}
 
-  '@ramz001-cinema/core@1.2.2(@eslint/js@10.0.1(eslint@10.8.1(jiti@2.7.0)))(eslint-plugin-prettier@5.5.6(eslint-config-prettier@10.1.8(eslint@10.8.1(jiti@2.7.0)))(eslint@10.8.1(jiti@2.7.0))(prettier@3.9.6))(eslint@10.8.1(jiti@2.7.0))(globals@17.11.0)(prettier@3.9.6)(typescript-eslint@8.66.0(eslint@10.8.1(jiti@2.7.0))(typescript@6.0.3))':
+  '@ramz001-cinema/core@1.2.3(@eslint/js@10.0.1(eslint@10.8.1(jiti@2.7.0)))(eslint-plugin-prettier@5.5.6(eslint-config-prettier@10.1.8(eslint@10.8.1(jiti@2.7.0)))(eslint@10.8.1(jiti@2.7.0))(prettier@3.9.6))(eslint@10.8.1(jiti@2.7.0))(globals@17.11.0)(prettier@3.9.6)(typescript-eslint@8.66.0(eslint@10.8.1(jiti@2.7.0))(typescript@6.0.3))':
     dependencies:
       '@eslint/js': 10.0.1(eslint@10.8.1(jiti@2.7.0))
       eslint: 10.8.1(jiti@2.7.0)
