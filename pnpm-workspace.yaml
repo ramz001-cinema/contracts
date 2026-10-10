@@ -1,3 +1,6 @@
+packages:
+  - '.'
+
 onlyBuiltDependencies:
   - '@bufbuild/buf'
   - '@nestjs/core'
