@@ -16,6 +16,10 @@ service AuthService {
   rpc TelegramInit(TelegramInitRequest) returns (TelegramInitResponse);
   // TelegramVerify
   rpc TelegramVerify(TelegramVerifyRequest) returns (TelegramVerifyResponse);
+  // TelegramComplete
+  rpc TelegramComplete(TelegramCompleteRequest) returns (TelegramCompleteResponse);
+  // TelegramConsume
+  rpc TelegramConsume(TelegramConsumeRequest) returns (TelegramConsumeResponse);
 }
 
 // SendOtpRequest is the request message for sending an OTP to a user.
@@ -73,4 +77,26 @@ message TelegramVerifyResponse {
     string access_token = 2;
     string refresh_token = 3;
   }
+}
+
+// TelegramCompleteRequest is the request message for completing Telegram authentication.
+message TelegramCompleteRequest {
+  string session_id = 1;
+  string phone = 2;
+}
+
+// TelegramCompleteResponse is the response message for completing Telegram authentication.
+message TelegramCompleteResponse {
+  string session_id = 1;
+}
+
+// TelegramConsumeRequest is the request message for consuming Telegram authentication.
+message TelegramConsumeRequest {
+  string session_id = 1;
+}
+
+// TelegramConsumeResponse is the response message for consuming Telegram authentication.
+message TelegramConsumeResponse {
+  string access_token = 1;
+  string refresh_token = 2;
 }
