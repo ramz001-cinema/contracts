@@ -1,7 +1,15 @@
 version: v2
 plugins:
+  # NestJS transport: service contracts return Observable (ClientGrpc).
   - local: protoc-gen-ts_proto
     out: src/gen
     opt:
       - nestJs=true
       - package=omit
+  # Raw @grpc/grpc-js client for non-Nest services: typed constructor, callback style.
+  - local: protoc-gen-ts_proto
+    out: src/gen-grpc
+    opt:
+      - outputServices=grpc-js
+      - package=omit
+      - esModuleInterop=true
